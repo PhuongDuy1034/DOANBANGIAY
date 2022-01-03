@@ -15,6 +15,10 @@ class CreateInvoiceDetailsTable extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
+            $table->Integer('invoiceId');
+            $table->Integer('productId');
+            $table->Integer('quantity');
+            $table->Integer('UnitPrice');
             $table->timestamps();
         });
     }
