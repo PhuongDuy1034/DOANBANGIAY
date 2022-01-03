@@ -13,6 +13,10 @@ class LoginController extends Controller
 
     protected $redirectTo = '/admin';
 
+    public function index()
+{
+return view('admin.dashboard.index');
+}
 public function showLoginForm()
 {
 return view('admin.auth.login');
@@ -27,7 +31,7 @@ if (Auth::guard('admin')->attempt([
 'email' => $request->email,
 'password' => $request->password
 ], $request->get('remember'))) {
-return redirect()->intended(route('admin.dashboard.index'));
+    return redirect()->intended(route('admin.dashboard'));
 }
 return back()->withInput($request->only('email', 'remember'));
 }
