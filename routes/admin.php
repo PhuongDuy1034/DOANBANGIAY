@@ -19,4 +19,4 @@ Route::group(['middleware' => ['auth:admin']], function () {
     return view('admin.dashboard.index');
     })->name('admin.dashboard');
 });
-//  Route::get('admin','admin.dashboard.index')->name('admin.dashboard.index');
+
