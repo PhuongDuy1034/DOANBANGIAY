@@ -15,10 +15,16 @@ Route::get('/', function () {
 return view('admin.dashboard.index');
 });
 
+  Route::get('Account', [Admin\AccountController::class, 'index'])->name('admin.account.index');
+   Route::post('Account', [Admin\AccountController::class, 'create'])->name('admin.account.create');
+  // Route::resource('/Account',[Admin\AccountController::class]);
+  Route::get('/', function () {
+    return view('admin.dashboard.index');
+    });
 });
 Route::group(['middleware' => ['auth:admin']], function () {
-    Route::get('/', function () {
-    return view('admin.dashboard.index');
-    })->name('admin.dashboard');
+  Route::get('/', function () {
+  return view('admin.dashboard.index');
+  })->name('admin.dashboard');
 });
 
