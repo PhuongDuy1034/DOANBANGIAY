@@ -38,6 +38,7 @@
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me
 								</label>
+								<a href="{{ route('admin.register')}}" > Register</a>
 							</div>
 							<button class="btn btn-primary">Login</button></fieldset>
 					</form>

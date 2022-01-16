@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
   Route::get('login', [Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
   Route::post('login', [Admin\LoginController::class, 'login'])->name('admin.login.post');
   Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
-
+  Route::get('register', [Admin\RegisterController::class, 'showRegisterForm'])->name('admin.register');
 Route::get('/', function () {
 return view('admin.dashboard.index');
 });
