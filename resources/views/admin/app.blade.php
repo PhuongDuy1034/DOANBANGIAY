@@ -25,7 +25,9 @@
 @include('admin.partials.header')
 @include('admin.partials.sidebar')
 <main >
+    <div class="container">
 @yield('content')
+    </div>
 </main>
 <script src="{{ asset('backend/js/jquery-1.11.1.min.js')}} "></script>
 <script src="{{ asset('backend/js/bootstrap.min.js')}} "></script>
