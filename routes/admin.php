@@ -8,8 +8,12 @@ use App\Http\Controllers\Admin;
   Route::post('login', [Admin\LoginController::class, 'login'])->name('admin.login.post');
   Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
-Route::get('/', function () {
-return view('admin.dashboard.index');
+  Route::get('/', function () {
+    return view('admin.dashboard.index');
+    });
 });
+Route::group(['middleware' => ['auth:admin']], function () {
+  Route::get('/', function () {
+  return view('admin.dashboard.index');
+  })->name('admin.dashboard');
 });
-//  Route::get('admin','admin.dashboard.index')->name('admin.dashboard.index');

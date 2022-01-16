@@ -28,5 +28,4 @@ class AccountTableSeeder extends Seeder
             'status' => '1',
             ]);
     }
-
 }

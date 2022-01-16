@@ -14,15 +14,16 @@ class CreateInvoicesTable extends Migration
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('code');
-            $table->Integer('accountId');
+            $table->Integer('accountId')->unsigned();
             $table->datetime('isuedDate');
             $table->string('shippingAddress');            
             $table->Integer('shippingPhone');
             $table->Integer('total');
             $table->boolean('status');
             $table->timestamps();
+            $table->foreign('accountId')->references('id')->on('accounts');
         });
     }
 

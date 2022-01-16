@@ -12,7 +12,14 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     protected $redirectTo = '/admin';
-
+    public function __construct()
+    {
+    $this->middleware('guest:admin')->except('logout');
+    }
+    public function index()
+{
+return view('admin.dashboard.index');
+}
 public function showLoginForm()
 {
 return view('admin.auth.login');
@@ -27,9 +34,15 @@ if (Auth::guard('admin')->attempt([
 'email' => $request->email,
 'password' => $request->password
 ], $request->get('remember'))) {
-return redirect()->intended(route('admin.dashboard.index'));
+return redirect()->intended(route('admin.dashboard'));
 }
 return back()->withInput($request->only('email', 'remember'));
+}
+public function logout(Request $request)
+{
+Auth::guard('admin')->logout();
+$request->session()->invalidate();
+return redirect()->route('admin.login');
 }
 
 }

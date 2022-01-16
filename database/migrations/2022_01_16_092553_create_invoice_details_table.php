@@ -14,12 +14,14 @@ class CreateInvoiceDetailsTable extends Migration
     public function up()
     {
         Schema::create('invoice_details', function (Blueprint $table) {
-            $table->id();
-            $table->Integer('invoiceId');
-            $table->Integer('productId');
+            $table->increments('id');
+            $table->Integer('invoiceId')->unsigned();
+            $table->Integer('productId')->unsigned();
             $table->Integer('quantity');
             $table->Integer('UnitPrice');
             $table->timestamps();
+            $table->foreign('invoiceId')->references('id')->on('invoices');
+            $table->foreign('productId')->references('id')->on('products');
         });
     }
 
