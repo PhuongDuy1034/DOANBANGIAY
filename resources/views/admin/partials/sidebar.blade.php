@@ -17,13 +17,13 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="{{ route('admin.account.index') }}"><em class="fa fa-calendar">&nbsp;</em> Account</a></li>
-			<li><a href="{{ route('admin.productType.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Manage ProductType</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> Manage Product</a></li>
+			<li><a href="{{ route('admin.account.index') }}"><em class="fa fa-user-circle">&nbsp;</em> Account</a></li>
+			<li><a href="{{ route('admin.productType.index') }}"><em class="fa fa-shopping-cart">&nbsp;</em> Manage ProductType</a></li>
+			<li><a href="{{ route('admin.product.index') }}"><em class="fa fa-shopping-cart">&nbsp;</em> Manage Product</a></li>
 			<li><a href="{{ route('admin.provider.index') }}"><em class="fa fa-clone">&nbsp;</em> Manage Provider</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Manage Cart</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Manage Invoice</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Manage InvoiceDetail</a></li>
+			<li><a href="{{ route('admin.cart.index') }}"><em class="fa fa-cart-plus ">&nbsp;</em> Manage Cart</a></li>
+			<li><a href="{{ route('admin.invoice.index') }}"><em class="fa fa-newspaper-o">&nbsp;</em> Manage Invoice</a></li>
+			<li><a href="{{ route('admin.invoiceDetail.index') }}"><em class="fa fa-newspaper-o">&nbsp;</em> Manage InvoiceDetail</a></li>
 
 			
 			<li><a href="{{ route('admin.logout')}}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>

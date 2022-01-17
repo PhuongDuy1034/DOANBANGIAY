@@ -15,7 +15,8 @@ class InvoiceDetailController extends Controller
      */
     public function index()
     {
-        //
+        $invoiceDetail=InvoiceDetail::latest()->paginate(5);;
+        return view('admin.invoiceDetail.index',compact('invoiceDetail'));
     }
 
     /**
