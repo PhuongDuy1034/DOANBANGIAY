@@ -26,10 +26,14 @@
 @include('admin.partials.sidebar')
 <main >
     <div class="container">
-
+        
         @yield('content')
-            </div>
 
+            
+
+
+    
+    </div>
 
 
 </main>

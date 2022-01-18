@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -14,7 +15,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cart=Cart::latest()->paginate(5);
+        return view('admin.cart.index',compact('cart'));
+
     }
 
     /**
