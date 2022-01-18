@@ -30,8 +30,7 @@
         @yield('content')
             </div>
 
-@yield('content')
-    </div>
+
 
 </main>
 <script src="{{ asset('backend/js/jquery-1.11.1.min.js')}} "></script>
