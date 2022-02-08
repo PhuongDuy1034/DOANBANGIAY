@@ -18,11 +18,13 @@ use Illuminate\Support\Arr;
 
 
   Route::get('Account', [Admin\AccountController::class, 'index'])->name('admin.account.index');
-   Route::post('Account', [Admin\AccountController::class, 'create'])->name('admin.account.create');
-  // Route::resource('/Account',[Admin\AccountController::class]);
+  Route::get('/create', [Admin\AccountController::class, 'create'])->name('admin.account.create');
+  // Route::get('Account', [Admin\AccountController::class, 'show'])->name('admin.account.show');
+  
   Route::get('/', function () {
     return view('admin.dashboard.index');
     });
+    //Route::resource('/Account',[Admin\AccountController::class]);
 });
 Route::group(['middleware' => ['auth:admin']], function () {
   Route::get('/', function () {

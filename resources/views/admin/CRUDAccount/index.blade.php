@@ -9,7 +9,7 @@
                     <h2>Account</h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('admin.account.create') }}" class="btn btn-success btn-sm" title="Add New Contact">
+                    <a href="{{route('admin.account.create') }}" class="btn btn-success btn-sm" title="Add New Contact">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <br/>
@@ -33,7 +33,7 @@
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>
-                                        <a href="{{ url('/contact/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                        <a href="{{ url('/Account/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/contact/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                         <form method="POST" action="{{ url('/contact' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
