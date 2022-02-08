@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Account;
 use Illuminate\Http\Request;
 
+
 class AccountController extends Controller
 {
     /**
@@ -25,8 +26,9 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        
         return view('admin.CRUDAccount.create');
     }
 
@@ -51,8 +53,8 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $accounts = Account::find($id);
-        return view('admin.CRUDAccount.Show')->with('accounts', $accounts);
+        $account = Account::find($id);
+        return view('admin.CRUDAccount.Show')->with('accounts', $account);
     }
 
     /**
