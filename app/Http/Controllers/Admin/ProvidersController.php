@@ -5,6 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Providers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use NunoMaduro\Collision\Contracts\Provider;
 
 class ProvidersController extends Controller
 {
@@ -26,7 +29,8 @@ class ProvidersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.provider.create');
+
     }
 
     /**
@@ -37,7 +41,12 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+        $input = $request->all();
+        Providers::create($input);
+        return redirect()->route('admin.provider.index')->with('flash_message', 'ProductType Addedd!');
     }
 
     /**
@@ -80,8 +89,9 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Providers $providers)
+    public function destroy( $id)
     {
-        //
+        $kq = DB::delete('delete from providers where id = ?', [$id]);
+        return redirect()->route('admin.provider.index')->with('flash_message', 'Contact deleted!');
     }
 }

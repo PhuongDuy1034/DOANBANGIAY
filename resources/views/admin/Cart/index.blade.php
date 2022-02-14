@@ -9,7 +9,7 @@
                     <h2>Cart</h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{ url('/contact/create') }}" class="btn btn-success btn-sm" title="Add New Contact">
+                    <a href="{{ route('admin.cart.create') }}" class="btn btn-success btn-sm" title="Add New Contact">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <br/>
@@ -31,7 +31,14 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->accountId }}</td>
                                     <td>{{ $item->productId }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>
+                                        @if ($item->status==1)
+                                        <span style="color: rgb(9, 255, 0)" class="badge badge-success">Public</span>
+                                        @else
+                                        <span style="color: red" class="badge badge-danger">Private</span>
+                                        
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ url('/contact/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/contact/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductType;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
 class ProductTypeController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $productType=ProductType::latest()->paginate(5);;
+        $productType=ProductType::latest()->paginate(100);;
         return view('admin.ProductType.index',compact('productType'));
     }
 
@@ -26,7 +26,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.ProductType.create');
     }
 
     /**
@@ -37,51 +37,44 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+        $input = $request->all();
+        ProductType::create($input);
+        return redirect()->route('admin.productType.index')->with('flash_message', 'ProductType Addedd!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $pt = ProductType::find($id);
+        return view('admin.ProductType.show')->with('contacts', $pt);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // 
+    public function edit( $id)
     {
-        //
+        // $contact = DB::table('product_types')->find($id);
+        $contact = ProductType::find($id);
+        return view('admin.ProductType.edit')->with([
+            'contact'=>$contact,
+            'id'=>$id
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        
+        $contact = ProductType::find($id);
+        $input = $request->all();
+        // return $input;
+        $contact->update($input);
+        return redirect()->route('admin.productType.index')->with('flash_message', 'ProductType Updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
+        $kq = ProductType::find($id)->delete();
+        return redirect()->route('admin.productType.index')->with('flash_message', 'ProductType deleted!');
     }
 }
