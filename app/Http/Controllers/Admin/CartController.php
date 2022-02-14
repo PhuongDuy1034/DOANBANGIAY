@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -27,7 +29,8 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        $product=DB::table('products')->select('id','name')->get();
+        return view('admin.cart.create',compact('product'));
     }
 
     /**
@@ -38,7 +41,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Cart::create($input);
+        return redirect()->route('admin.cart.index')->with('flash_message', 'Cart Addedd!');
     }
 
     /**
