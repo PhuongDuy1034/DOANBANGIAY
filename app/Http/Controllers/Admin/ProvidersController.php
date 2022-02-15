@@ -55,9 +55,9 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function show(Providers $providers)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -66,21 +66,22 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Providers $providers)
+    public function edit($id)
     {
-        //
+        $contact = Providers::find($id);
+        return view('admin.Provider.edit')->with([
+            'contact'=>$contact,
+            'id'=>$id
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Providers  $providers
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Providers $providers)
+    
+    public function update(Request $request, $id)
     {
-        //
+        $contact = Providers::find($id);
+        $input = $request->all();
+        $contact->update($input);
+        return redirect()->route('admin.provider.index')->with('flash_message', 'Provider Updated!');
     }
 
     /**

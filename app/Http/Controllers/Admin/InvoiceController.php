@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -15,7 +16,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoice=Invoice::latest()->paginate(5);;
+        $invoice=Invoice::latest()->paginate(10);;
         return view('admin.invoice.index',compact('invoice'));
 
     }
@@ -27,7 +28,8 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $inv=DB::table('accounts')->select('id','fullname')->get();
+        return view('admin.invoice.create',compact('inv'));
     }
 
     /**
@@ -38,7 +40,12 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code'=>'required'
+        ]);
+        $input = $request->all();
+        Invoice::create($input);
+        return redirect()->route('admin.invoice.index')->with('flash_message', 'Invoice Addedd!');
     }
 
     /**
@@ -58,9 +65,13 @@ class InvoiceController extends Controller
      * @param  \App\Models\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Invoice $invoice)
+    public function edit($id)
     {
-        //
+        $contact = Invoice::find($id);
+        return view('admin.invoice.edit')->with([
+            'contact'=>$contact,
+            'id'=>$id
+        ]);
     }
 
     /**
@@ -70,9 +81,12 @@ class InvoiceController extends Controller
      * @param  \App\Models\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request,$id)
     {
-        //
+        $contact = Invoice::find($id);
+        $input = $request->all();
+        $contact->update($input);
+        return redirect()->route('admin.invoice.index')->with('flash_message', 'ProductType Updated!');
     }
 
     /**
@@ -81,8 +95,10 @@ class InvoiceController extends Controller
      * @param  \App\Models\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoice $invoice)
+    public function destroy($id)
     {
-        //
+        $kq = Invoice::find($id)->delete();
+        return redirect()->route('admin.invoice.index')->with('flash_message', 'ProductType deleted!');
+    
     }
 }

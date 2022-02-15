@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -15,8 +17,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product=Product::latest()->paginate(5);;
-        return view('admin.Product.index',compact('product'));
+        $product=DB::table('products')
+        ->join('product_types','products.productTypeId','=','product_types.id')
+        ->join('providers','products.providerId','=','providers.id')
+        ->select('products.*',DB::raw('product_types.name as nameType,providers.name as namepro'))->get();
+        return view('admin.Product.index',[
+            'product'=>$product
+        ]);
 
     }
 
@@ -27,7 +34,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $productType=DB::table('product_types')->select('id','name')->get();
+        $provider=DB::table('providers')->select('id','name')->get();
+        return view('admin.Product.create',[
+            'productType'=>$productType,
+            'provider'=>$provider
+        ]);
     }
 
     /**
@@ -38,7 +50,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name'=>'required',
+            'sku'=>'required',
+            'price'=>'required',
+        ]);
+        $input = $request->all();
+        Product::create($input);
+        return view('admin.Product.index');
     }
 
     /**

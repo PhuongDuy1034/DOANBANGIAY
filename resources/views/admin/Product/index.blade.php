@@ -3,13 +3,13 @@
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-1 main">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header" >
-                    <h2>ProductType</h2>
+                    <h2>Product</h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{ url('/contact/create') }}" class="btn btn-success btn-sm" title="Add New Contact">
+                    <a href="{{ route('admin.product.create') }}" class="btn btn-success btn-sm" title="Add New Contact">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <br/>
@@ -38,10 +38,17 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->deccription }}</td>
                                     <td>{{ $item->price }}</td>
-                                    <td>{{ $item->productTypeId }}</td>
+                                    <td>{{ $item->nameType }}</td>
                                     <td>{{ $item->image }}</td>
-                                    <td>{{ $item->providerId }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->namepro }}</td>
+                                    <td>
+                                        @if ($item->status==1)
+                                        <span style="color: rgb(9, 255, 0)" class="badge badge-success">Public</span>
+                                        @else
+                                        <span style="color: red" class="badge badge-danger">Private</span>
+                                        
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ url('/contact/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/contact/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
