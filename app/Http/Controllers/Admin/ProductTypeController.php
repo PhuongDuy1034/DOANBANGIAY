@@ -37,6 +37,7 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
+        dd(1);
         $request->validate([
             'name'=>'required'
         ]);
@@ -47,7 +48,10 @@ class ProductTypeController extends Controller
     public function show($id)
     {
         $pt = ProductType::find($id);
-        return view('admin.ProductType.show')->with('contacts', $pt);
+        return view('admin.ProductType.show')->with([
+            'pt'=>$pt,
+            'id'=>$id
+        ]);
     }
 
     // 
