@@ -17,7 +17,16 @@ use Illuminate\Support\Arr;
   Route::post('{id}/editproductType',[Admin\ProductTypeController::class,'update'])->name('admin.productType.update');
   Route::get('showproductType',[Admin\ProductTypeController::class,'show'])->name('admin.productType.show');
   Route::get('destroyproductType/{id}',[Admin\ProductTypeController::class,'destroy'])->name('admin.productType.destroy');
-  //provider
+
+  //
+  Route::get('Account', [Admin\AccountController::class,'index'])->name('admin.account.index');
+  Route::get('addAccount',[Admin\AccountController::class,'create'])->name('admin.account.create');
+  Route::post('addAccount',[Admin\AccountController::class,'store'])->name('admin.account.store');
+  Route::get('editAccount/{id}',[Admin\AccountController::class,'edit'])->name('admin.account.edit');
+  Route::post('{id}/editAccount',[Admin\AccountController::class,'update'])->name('admin.account.update');
+  Route::get('showAccount/{id}',[Admin\AccountController::class,'show'])->name('admin.account.show');
+  Route::get('destroyAccount/{id}',[Admin\AccountController::class,'destroy'])->name('admin.account.destroy');
+  //
   Route::get('provider',[Admin\ProvidersController::class,'index'])->name('admin.provider.index');
   Route::get('addprovider',[Admin\ProvidersController::class,'create'])->name('admin.provider.create');
   Route::post('addprovider',[Admin\ProvidersController::class,'store'])->name('admin.provider.store');
@@ -51,10 +60,9 @@ use Illuminate\Support\Arr;
   Route::get('destroyinvoice/{id}',[Admin\invoiceController::class,'destroy'])->name('admin.invoice.destroy');
   //
   Route::get('invoiceDetail',[Admin\invoiceDetailController::class,'index'])->name('admin.invoiceDetail.index');
+  //
 
-
-  Route::get('Account', [Admin\AccountController::class, 'index'])->name('admin.account.index');
-  Route::get('/create', [Admin\AccountController::class, 'create'])->name('admin.account.create');
+ 
   // Route::get('Account', [Admin\AccountController::class, 'show'])->name('admin.account.show');
   
   Route::get('/', function () {
