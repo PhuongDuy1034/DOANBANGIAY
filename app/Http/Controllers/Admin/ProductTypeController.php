@@ -53,7 +53,6 @@ class ProductTypeController extends Controller
     // 
     public function edit( $id)
     {
-        // $contact = DB::table('product_types')->find($id);
         $contact = ProductType::find($id);
         return view('admin.ProductType.edit')->with([
             'contact'=>$contact,
@@ -67,7 +66,6 @@ class ProductTypeController extends Controller
         
         $contact = ProductType::find($id);
         $input = $request->all();
-        // return $input;
         $contact->update($input);
         return redirect()->route('admin.productType.index')->with('flash_message', 'ProductType Updated!');
     }

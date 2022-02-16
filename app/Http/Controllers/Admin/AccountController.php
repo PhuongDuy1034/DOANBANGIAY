@@ -40,9 +40,24 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+        // $input = $request->all();
+        // Account::create($input);
+        // return redirect('account')->with('flash_message', 'Account Addedd!');
+        $request->validate([
+            'username'=>'required',
+            'password'=>'required',
+            'email'=>'required',
+            'fullname'=>'required',
+            'isadmin'=>'required',
+            'status'=>'required',
+            'address'=>'required',
+            'avatar'=>'required',
+            'phone'=>'required',
+            
+        ]);
         $input = $request->all();
         Account::create($input);
-        return redirect('account')->with('flash_message', 'Account Addedd!');
+        return redirect()->route('admin.account.index')->with('flash_message', 'Account Addedd!');
     }
 
     /**
@@ -65,8 +80,13 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
+        // $accounts = Account::find($id);
+        // return view('admin.CRUDAccount.edit')->with('accounts', $accounts);
         $accounts = Account::find($id);
-        return view('admin.CRUDAccount.edit')->with('accounts', $accounts);
+        return view('admin.CRUDAccount.edit')->with([
+            'accounts'=>$accounts,
+            'id'=>$id
+        ]);
     }
 
     /**
@@ -81,7 +101,8 @@ class AccountController extends Controller
         $accounts = Account::find($id);
         $input = $request->all();
         $accounts->update($input);
-        return redirect('accounts')->with('flash_message', 'Account Updated!');  
+        return redirect()->route('admin.account.index')->with('flash_message', 'Account Updated!');  
+  
     }
 
     /**
@@ -92,7 +113,8 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        Account::destroy($id);
-        return redirect('accounts')->with('flash_message', 'Account deleted!');  
+        $kq = Account::find($id)->delete();
+        return redirect()->route('admin.account.index')->with('flash_message', 'Account deleted!');
+     
     }
 }
