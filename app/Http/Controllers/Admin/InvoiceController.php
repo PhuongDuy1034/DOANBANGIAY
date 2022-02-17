@@ -67,10 +67,12 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
+        $inv=DB::table('accounts')->select('id','fullname')->get();
         $contact = Invoice::find($id);
         return view('admin.invoice.edit')->with([
             'contact'=>$contact,
-            'id'=>$id
+            'id'=>$id,
+            'inv'=>$inv
         ]);
     }
 
@@ -89,12 +91,7 @@ class InvoiceController extends Controller
         return redirect()->route('admin.invoice.index')->with('flash_message', 'ProductType Updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         $kq = Invoice::find($id)->delete();

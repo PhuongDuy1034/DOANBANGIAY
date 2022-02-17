@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($product as $item)
+                            @foreach($pro as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->sku }}</td>
@@ -51,11 +51,10 @@
                                     </td>
                                     <td>
                                         <a href="{{ url('/contact/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                        <a href="{{ url('/contact/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                        <form method="POST" action="{{ url('/contact' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                        <a href="{{ route('admin.product.edit',$item->id) }}"><button class="btn btn-primary btn-sm"> Edit</button></a>
+                                        <form method="GET" action="{{ route('admin.product.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"> Delete</button>
                                         </form>
                                     </td>
                                 </tr>

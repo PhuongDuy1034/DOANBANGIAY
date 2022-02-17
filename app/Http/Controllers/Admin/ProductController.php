@@ -10,24 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $product=DB::table('products')
+        $pro=DB::table('products')
         ->join('product_types','products.productTypeId','=','product_types.id')
         ->join('providers','products.providerId','=','providers.id')
         ->select('products.*',DB::raw('product_types.name as nameType,providers.name as namepro'))->get();
-        return view('admin.Product.index',[
-            'product'=>$product
-        ]);
-
+        return view('admin.product.index',compact('pro'));
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -78,9 +70,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $productType=DB::table('product_types')->select('id','name')->get();
+        $provider=DB::table('providers')->select('id','name')->get();
+        $contact = Product::find($id);
+        return view('admin.Product.edit')->with([
+            'contact'=>$contact,
+            'id'=>$id,
+            'productType'=>$productType,
+            'provider'=>$provider
+        ]);
     }
 
     /**
@@ -90,9 +90,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = Product::find($id);
+        $input = $request->all();
+        // return $input;
+        $contact->update($input);
+        return redirect()->route('admin.product.index')->with('flash_message', 'ProductType Updated!');
     }
 
     /**
@@ -101,8 +105,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $kq = Product::find($id)->delete();
+        return redirect()->route('admin.product.index')->with('flash_message', 'ProductType deleted!');
+   
     }
 }
