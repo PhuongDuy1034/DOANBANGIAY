@@ -38,8 +38,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.productType.show') }}" ><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                        <a href="{{ route('admin.productType.edit',$item->id) }}"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        <a href="{{route('admin.productType.show',$item->id) }}" ><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                        <a href="{{route('admin.productType.edit',$item->id) }}"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                         <form method="GET" action="{{ route('admin.productType.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             @csrf
                                             @method('DELETE')

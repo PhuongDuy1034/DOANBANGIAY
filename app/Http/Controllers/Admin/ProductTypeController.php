@@ -70,7 +70,6 @@ class ProductTypeController extends Controller
         
         $contact = ProductType::find($id);
         $input = $request->all();
-        // return $input;
         $contact->update($input);
         return redirect()->route('admin.productType.index')->with('flash_message', 'ProductType Updated!');
     }
