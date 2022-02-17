@@ -13,8 +13,14 @@
         <input type="hidden" name="id" id="id" value="{{$contact->id}}" id="id" />
         <label>Code</label></br>
         <input type="text" name="code" id="code" value="{{$contact->code}}" class="form-control"></br>
-        <label>AccountId</label></br>
-        <input type="text" name="accountId" id="accountId" value="{{$contact->accountId}}" class="form-control"></br>
+        <div class="form-group">
+          <label for="productId">AccountId</label>
+          <select class="form-control"  name="accountId">
+              @foreach ($inv as $item )
+                  <option value="{{ $item->id }}">{{ $item->fullname }}</option>
+              @endforeach
+          </select>
+      </div>
         <label>ShippingAddress</label></br>
         <input type="text" name="shippingAddress" id="shippingAddress" value="{{$contact->shippingAddress}}" class="form-control"></br>
         <label>ShippingPhone</label></br>
