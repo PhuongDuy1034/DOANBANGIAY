@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
   Route::get('login', [Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
   Route::post('login', [Admin\LoginController::class, 'login'])->name('admin.login.post');
   Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
+  Route::get('userlogout', [Admin\LoginController::class, 'userlogout'])->name('user.logout');
   Route::get('register', [Admin\RegisterController::class, 'showRegisterForm'])->name('admin.register');
   //productType
   Route::get('productType',[Admin\ProductTypeController::class,'index'])->name('admin.productType.index');

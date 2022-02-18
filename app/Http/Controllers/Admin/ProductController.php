@@ -47,10 +47,11 @@ class ProductController extends Controller
             'name'=>'required',
             'sku'=>'required',
             'price'=>'required',
+            
         ]);
         $input = $request->all();
         Product::create($input);
-        return view('admin.Product.index');
+        return redirect()->route('admin.product.index')->with('flash_message', 'Account Addedd!');
     }
 
     /**
