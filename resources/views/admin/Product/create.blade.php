@@ -8,7 +8,7 @@
             <div class="card-body">
                 
                 <form action="{{ route('admin.product.store') }}" method="POST" role="form">
-                    
+                    @csrf
                     <div class="form-group">
                         <label>SKU</label></br>
                         <input type="text" name="sku" class="form-control" placeholder="Enter Name"></br>
