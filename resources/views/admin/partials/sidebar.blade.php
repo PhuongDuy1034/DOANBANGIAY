@@ -24,6 +24,7 @@
 			<li><a href="{{ route('admin.cart.index') }}"><em class="fa fa-cart-plus ">&nbsp;</em> Manage Cart</a></li>
 			<li><a href="{{ route('admin.invoice.index') }}"><em class="fa fa-newspaper-o">&nbsp;</em> Manage Invoice</a></li>
 			<li><a href="{{ route('admin.invoiceDetail.index') }}"><em class="fa fa-newspaper-o">&nbsp;</em> Manage InvoiceDetail</a></li>
+			<li><a href="{{ route('admin.user.index') }}"><em class="fa fa-newspaper-o">&nbsp;</em> User</a></li>
 
 			
 			<li><a href="{{ route('admin.logout')}}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
