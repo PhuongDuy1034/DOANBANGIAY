@@ -48,7 +48,7 @@ public function userlogout(Request $request)
 {
 Auth::guard('admin')->logout();
 $request->session()->invalidate();
-return redirect()->route('user.login');
+return redirect()->route('login');
 }
 }
 

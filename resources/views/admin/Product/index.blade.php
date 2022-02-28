@@ -39,7 +39,9 @@
                                     <td>{{ $item->deccription }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->nameType }}</td>
-                                    <td>{{ $item->image }}</td>
+                                    <td>
+                                        <img onclick="MymodalImage(this);" alt="{{ $item->name }}" src="/public/upload/image/{{ $item->image }}" style="cursor: zoom-in;" width="60"/>
+                                    </td>
                                     <td>{{ $item->namepro }}</td>
                                     <td>
                                         @if ($item->status==1)

@@ -7,7 +7,7 @@
             <div class="card-header">Add Product</div>
             <div class="card-body">
                 
-                <form action="{{ route('admin.product.store') }}" method="POST" role="form">
+                <form action="{{ route('admin.product.store') }}" method="POST" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>SKU</label></br>
@@ -45,9 +45,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Image</label></br>
-                        <input id="" type="text" name="image" class="form-control" placeholder="Enter Name"></br>
+                        <label for="image">Image</label></br>
+                        <input id="image"  type="file" name="image" class="form-control" ></br>
                     </div>
+                  
                     <div class="form-group">
                     <label>Status</label></br>
                     <input id="" type="text" name="status" class=""></br>

@@ -11,11 +11,11 @@
 					</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-					   <a class="nav-item nav-link" href="index.html">Home</a>
+					   <a class="nav-item nav-link" href="/">Home</a>
 					   <a class="nav-item nav-link" href="/product">New Products</a>
 					   <a class="nav-item nav-link" href="shoes.html">Shoes</a>
 					   <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
-					   <a class="nav-item nav-link" href="contact.html">Contact</a>
+					   <a class="nav-item nav-link" href="{{ route('admin.login') }}">Admin</a>
 					   <a class="nav-item nav-link last" href="#"><img src="{{ asset('frontend/images/search_icon.png')}}"></a>
 					   <a class="nav-item nav-link last" href="contact.html"><img src="{{ asset('frontend/images/shop_icon.png')}}"></a>
 					</div>

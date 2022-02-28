@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>@yield('title') - {{ config('app.name') }}</title>
+	<title>@yield('title')  {{ config('app.name') }}</title>
     <link href="{{ asset('backend/css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('backend/css/font-awesome.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('backend/css/datepicker3.css')}}" rel="stylesheet">
@@ -38,7 +38,7 @@
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me
 								</label>
-								<a href="{{ route('admin.register')}}" > Register</a>
+								{{-- <a href="{{ route('admin.register')}}" > Register</a> --}}
 							</div>
 							<button class="btn btn-primary">Login</button></fieldset>
 					</form>
