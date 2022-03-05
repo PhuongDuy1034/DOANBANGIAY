@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class AccountController extends Controller
@@ -28,7 +30,7 @@ class AccountController extends Controller
      */
     public function create(Request $request)
     {
-        
+      
         return view('admin.CRUDAccount.create');
     }
 
@@ -38,6 +40,13 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     protected function validator(array $request)
+    {
+        return Validator::make($request, [
+      
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
     public function store(Request $request)
     {
         // $input = $request->all();
@@ -46,6 +55,8 @@ class AccountController extends Controller
         $request->validate([
             'username'=>'required',
             'password'=>'required',
+            // 'password' => Hash::make($request['password']),
+                
             'email'=>'required',
             'fullname'=>'required',
             'isadmin'=>'required',
@@ -66,6 +77,7 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function show($id)
     {
         $account = Account::find($id);

@@ -47,6 +47,7 @@ class ProductController extends Controller
             'name'=>'required',
             'sku'=>'required',
             'price'=>'required',
+            
         ]);
          $getImages = '';
             if($request->hasFile('image')){

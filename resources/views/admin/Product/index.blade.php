@@ -40,6 +40,7 @@
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->nameType }}</td>
                                     <td>
+
                                         <img src={{ asset('assets/user/img/product/'.$item->image) }} style="cursor: zoom-in;" width="60px"/>
                                     </td>
                                     <td>{{ $item->namepro }}</td>

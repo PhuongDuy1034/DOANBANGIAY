@@ -48,6 +48,7 @@
                         <label>Image</label></br>
                         <input id="" type="file" name="image" class="form-control" placeholder="Enter Name"></br>
                     </div>
+                  
                     <div class="form-group">
                     <label>Status</label></br>
                     <input id="" type="text" name="status" class=""></br>

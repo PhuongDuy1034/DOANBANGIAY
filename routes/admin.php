@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Auth;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Arr;
  Route::group(['prefix' => '/'], function () {
   Route::get('login', [Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
   Route::post('login', [Admin\LoginController::class, 'login'])->name('admin.login.post');
   Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
+  Route::get('userlogout', [Admin\LoginController::class, 'userlogout'])->name('user.logout');
   Route::get('register', [Admin\RegisterController::class, 'showRegisterForm'])->name('admin.register');
   //productType
   Route::get('productType',[Admin\ProductTypeController::class,'index'])->name('admin.productType.index');
@@ -26,7 +28,15 @@ use Illuminate\Support\Arr;
   Route::post('{id}/editAccount',[Admin\AccountController::class,'update'])->name('admin.account.update');
   Route::get('showAccount/{id}',[Admin\AccountController::class,'show'])->name('admin.account.show');
   Route::get('destroyAccount/{id}',[Admin\AccountController::class,'destroy'])->name('admin.account.destroy');
-  //
+   //
+   Route::get('user', [Admin\UserController::class,'index'])->name('admin.user.index');
+  //  Route::get('addAccount',[Admin\UserController::class,'create'])->name('admin.account.create');
+  //  Route::post('addAccount',[Admin\UserController::class,'store'])->name('admin.account.store');
+  //  Route::get('editAccount/{id}',[Admin\UserController::class,'edit'])->name('admin.account.edit');
+  //  Route::post('{id}/editAccount',[Admin\UserController::class,'update'])->name('admin.account.update');
+  //  Route::get('showAccount/{id}',[Admin\UserController::class,'show'])->name('admin.account.show');
+  //  Route::get('destroyAccount/{id}',[Admin\UserController::class,'destroy'])->name('admin.account.destroy');
+  // //
   Route::get('provider',[Admin\ProvidersController::class,'index'])->name('admin.provider.index');
   Route::get('addprovider',[Admin\ProvidersController::class,'create'])->name('admin.provider.create');
   Route::post('addprovider',[Admin\ProvidersController::class,'store'])->name('admin.provider.store');
