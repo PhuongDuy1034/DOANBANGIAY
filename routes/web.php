@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\productController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -13,12 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('product', function () {
-    return view('layouts.user.newproduct');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// 
+Route::get('/', [productController::class, 'danhsach'])->name('user.layout.danhsach');
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
