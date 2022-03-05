@@ -7,7 +7,7 @@
   <div class="card-header">Invoice Page</div>
   <div class="card-body">
       
-      <form action="{{ route('admin.product.update',$id)}}" method="post">
+      <form action="{{ route('admin.product.update',$id)}}" enctype="multipart/form-data" method="post">
         @csrf
         @method("POST")
         <input type="hidden" name="id" id="id" value="{{$contact->id}}" id="id" />
@@ -27,6 +27,8 @@
                 @endforeach
             </select>
         </div>
+        <label>Image</label></br>
+        <input type="file" name="image" id="image" class="form-control"></br>
         <div class="form-group">
             <label for="providerId">Provider</label>
             <select class="form-control"  name="providerId">

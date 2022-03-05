@@ -39,7 +39,9 @@
                                     <td>{{ $item->deccription }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->nameType }}</td>
-                                    <td>{{ $item->image }}</td>
+                                    <td>
+                                        <img src={{ asset('assets/user/img/product/'.$item->image) }} style="cursor: zoom-in;" width="60px"/>
+                                    </td>
                                     <td>{{ $item->namepro }}</td>
                                     <td>
                                         @if ($item->status==1)
